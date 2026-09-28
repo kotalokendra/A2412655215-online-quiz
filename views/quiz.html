@@ -1,0 +1,273 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Quiz</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <h1>Online Quiz</h1>
+
+    <nav>
+      <a href="/">Home</a>
+      <a href="/scores">Scores</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Answer the Questions</h2>
+
+      <p class="instruction">
+        Select one answer for each question.
+      </p>
+
+      <form action="/submit" method="POST">
+
+        <input type="hidden" id="studentId" name="studentId">
+
+        <!-- Question 1 -->
+        <div class="question">
+          <h3>1. What does HTML stand for?</h3>
+
+          <label>
+            <input
+              type="radio"
+              name="question1"
+              value="Hyper Text Markup Language"
+              required
+            >
+            Hyper Text Markup Language
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              name="question1"
+              value="High Text Machine Language"
+            >
+            High Text Machine Language
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              name="question1"
+              value="Hyperlink Text Management Language"
+            >
+            Hyperlink Text Management Language
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              name="question1"
+              value="Home Tool Markup Language"
+            >
+            Home Tool Markup Language
+          </label>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question">
+          <h3>2. Which language is used to style a webpage?</h3>
+
+          <label>
+            <input
+              type="radio"
+              name="question2"
+              value="HTML"
+              required
+            >
+            HTML
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              name="question2"
+              value="CSS"
+            >
+            CSS
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              name="question2"
+              value="Node.js"
+            >
+            Node.js
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              name="question2"
+              value="SQL"
+            >
+            SQL
+          </label>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question">
+          <h3>3. Which command creates a package.json file?</h3>
+
+          <label>
+            <input
+              type="radio"
+              name="question3"
+              value="node create"
+              required
+            >
+            node create
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              name="question3"
+              value="npm init"
+            >
+            npm init
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              name="question3"
+              value="express start"
+            >
+            express start
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              name="question3"
+              value="npm build"
+            >
+            npm build
+          </label>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="question">
+          <h3>
+            4. Which framework is used with Node.js to create
+            web applications?
+          </h3>
+
+          <label>
+            <input
+              type="radio"
+              name="question4"
+              value="Express.js"
+              required
+            >
+            Express.js
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              name="question4"
+              value="Django"
+            >
+            Django
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              name="question4"
+              value="Spring"
+            >
+            Spring
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              name="question4"
+              value="Laravel"
+            >
+            Laravel
+          </label>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="question">
+          <h3>
+            5. Which HTTP method is used to submit form data
+            in this application?
+          </h3>
+
+          <label>
+            <input
+              type="radio"
+              name="question5"
+              value="GET"
+              required
+            >
+            GET
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              name="question5"
+              value="POST"
+            >
+            POST
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              name="question5"
+              value="LINK"
+            >
+            LINK
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              name="question5"
+              value="FETCH"
+            >
+            FETCH
+          </label>
+        </div>
+
+        <button type="submit" class="btn">
+          Submit Quiz
+        </button>
+
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Online Quiz Application</p>
+  </footer>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const studentId = params.get("studentId");
+
+    if (!studentId) {
+      window.location.href = "/register";
+    } else {
+      document.getElementById("studentId").value = studentId;
+    }
+  </script>
+
+</body>
+</html>

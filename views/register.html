@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Registration</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <h1>Online Quiz</h1>
+
+    <nav>
+      <a href="/">Home</a>
+      <a href="/register">Register</a>
+      <a href="/scores">Scores</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="card form-card">
+      <h2>Student Registration</h2>
+
+      <p>Enter your details to start the quiz.</p>
+
+      <form action="/register" method="POST">
+
+        <label for="studentId">Student ID</label>
+        <input
+          type="text"
+          id="studentId"
+          name="studentId"
+          placeholder="Enter student ID"
+          required
+        >
+
+        <label for="studentName">Student Name</label>
+        <input
+          type="text"
+          id="studentName"
+          name="studentName"
+          placeholder="Enter student name"
+          required
+        >
+
+        <button type="submit" class="btn">
+          Register and Start Quiz
+        </button>
+
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Online Quiz Application</p>
+  </footer>
+
+</body>
+</html>

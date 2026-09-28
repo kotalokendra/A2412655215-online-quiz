@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Scores</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <h1>Online Quiz</h1>
+
+    <nav>
+      <a href="/">Home</a>
+      <a href="/register">Register</a>
+      <a href="/scores">Scores</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Student Scores</h2>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>S.No</th>
+              <th>Student ID</th>
+              <th>Student Name</th>
+              <th>Score</th>
+              <th>Total</th>
+              <th>Percentage</th>
+            </tr>
+          </thead>
+
+          <tbody id="scoresTable">
+            <tr>
+              <td colspan="6">Loading scores...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p id="errorMessage" class="error-message"></p>
+
+      <a href="/register" class="btn">
+        Start New Quiz
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Online Quiz Application</p>
+  </footer>
+
+  <script>
+    async function loadScores() {
+      const tableBody = document.getElementById("scoresTable");
+      const errorMessage = document.getElementById("errorMessage");
+
+      try {
+        const response = await fetch("/api/scores");
+
+        if (!response.ok) {
+          throw new Error("Unable to load scores.");
+        }
+
+        const scores = await response.json();
+
+        tableBody.textContent = "";
+
+        if (scores.length === 0) {
+          const row = document.createElement("tr");
+          const cell = document.createElement("td");
+
+          cell.colSpan = 6;
+          cell.textContent = "No scores available.";
+
+          row.appendChild(cell);
+          tableBody.appendChild(row);
+
+          return;
+        }
+
+        scores.forEach((student, index) => {
+          const row = document.createElement("tr");
+
+          const values = [
+            index + 1,
+            student.studentId,
+            student.studentName,
+            student.score,
+            student.total,
+            `${student.percentage}%`
+          ];
+
+          values.forEach((value) => {
+            const cell = document.createElement("td");
+            cell.textContent = value;
+            row.appendChild(cell);
+          });
+
+          tableBody.appendChild(row);
+        });
+      } catch (error) {
+        tableBody.textContent = "";
+
+        errorMessage.textContent =
+          "Error loading scores. Please try again.";
+      }
+    }
+
+    loadScores();
+  </script>
+
+</body>
+</html>

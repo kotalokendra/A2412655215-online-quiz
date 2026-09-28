@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Result</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <h1>Online Quiz</h1>
+
+    <nav>
+      <a href="/">Home</a>
+      <a href="/register">Register</a>
+      <a href="/scores">Scores</a>
+    </nav>
+  </header>
+  <main class="container">
+    <section class="card result-card">
+      <h2>Quiz Result</h2>
+
+      <p id="studentName"></p>
+      <p id="studentId"></p>
+
+      <div class="score-box">
+        <h3 id="score"></h3>
+        <p id="percentage"></p>
+      </div>
+
+      <p id="message"></p>
+
+      <a href="/register" class="btn">
+        Take Quiz Again
+      </a>
+
+      <a href="/scores" class="btn secondary-btn">
+        View All Scores
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Online Quiz Application</p>
+  </footer>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+
+    const studentName = params.get("studentName") || "Student";
+    const studentId = params.get("studentId") || "N/A";
+    const score = Number(params.get("score")) || 0;
+    const total = Number(params.get("total")) || 0;
+
+    const percentage = total > 0
+      ? ((score / total) * 100).toFixed(2)
+      : "0.00";
+
+    document.getElementById("studentName").textContent =
+      `Student Name: ${studentName}`;
+
+    document.getElementById("studentId").textContent =
+      `Student ID: ${studentId}`;
+
+    document.getElementById("score").textContent =
+      `Your Score: ${score} / ${total}`;
+
+    document.getElementById("percentage").textContent =
+      `Percentage: ${percentage}%`;
+
+    document.getElementById("message").textContent =
+      score === total
+        ? "Excellent! You answered all questions correctly."
+        : "Thank you for completing the quiz. Keep practicing!";
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "name": "online-quiz",
+  "version": "1.0.0",
+  "description": "Online Quiz Application using Node.js and Express.js",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node --watch app.js"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "quiz"
+  ],
+  "author": "Kota Lokendra",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
